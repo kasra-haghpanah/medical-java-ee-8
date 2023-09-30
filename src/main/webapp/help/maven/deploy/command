@@ -1,0 +1,7 @@
+clean package glassfish:deploy
+clean package glassfish:redeploy
+clean package exec:exec glassfish:redeploy
+
+
+// for scala
+gatling:execute

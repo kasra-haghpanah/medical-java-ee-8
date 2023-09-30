@@ -1,0 +1,1 @@
+create-jms-resource --restype javax.jms.Queue --property Name=PhysicalQueue jms/MyQueue

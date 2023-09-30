@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="FirstJobChunkWithPlanPartition" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     version="1.0">
+    <!--<properties>
+        <property name="input" value="person.csv"/>
+    </properties>-->
+    <step id="FirstStep" next="secondStep">
+        <chunk checkpoint-policy="item" item-count="2">
+            <reader ref="personItemReader">
+                <properties>
+                    <property name="inputFile" value="#{partitionPlan['input']}"/>
+                </properties>
+            </reader>
+            <processor ref="personItemProcessor"/>
+            <writer ref="personItemWriter"></writer>
+            <!--  skip if event NoSuchElementException exception and no roleback -->
+            <skippable-exception-classes>
+                <include class="java.util.NoSuchElementException"/>
+                <include class="java.io.FileNotFoundException"/>
+            </skippable-exception-classes>
+            <retryable-exception-classes>
+                <include class="java.lang.NumberFormatException"/>
+            </retryable-exception-classes>
+
+
+            <!-- not roleback if event exception but retry the record exception  -->
+            <no-rollback-exception-classes>
+                <include class="java.lang.NumberFormatException"/>
+            </no-rollback-exception-classes>
+        </chunk>
+        <partition>
+            <!--<mapper ref="filePartitionMapper"/>-->
+            <plan partitions="2">
+                <properties partition="0">
+                    <property name="input" value="person.csv"/>
+                </properties>
+                <properties partition="1">
+                    <property name="input" value="person2.csv"/>
+                </properties>
+            </plan>
+        </partition>
+    </step>
+    <step id="secondStep">
+
+    </step>
+</job>

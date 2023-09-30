@@ -1,0 +1,23 @@
+https://javadude.wordpress.com/2013/12/06/hide-glassfish-server-information/
+
+create-domain --adminport 5000 --profile developer --user admin --portbase 8084 domain2
+
+
+create-domain --adminport 5000 --profile developer --user admin  domain2
+start-domain domain2
+
+
+//because build by maven
+//deploy --port 5000 --host localhost E:/playProject/jee/medical/target/medical.war
+
+deploy  --port 5000 --host localhost E:/playProject/jee/medical/target/medical.war
+
+start-domain domain2
+stop-domain domain2
+
+delete-domain domain2
+
+
+start-domain --debug domain2
+
+

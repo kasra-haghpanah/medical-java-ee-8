@@ -1,0 +1,3 @@
+create-javamail-resource --mailhost="smtp.gmail.com" --mailuser="kasrakhpk1985@gmail.com" --fromaddress="kasrakhpk1985@gmail.com" --debug="true" --enabled="true" --description="A new JavaMail Session!" --property="mail.smtp.password=REZA8414443KASRAh:mail.smtp.auth=true:mail.smtp.port=587:mail.smtp.socketFactory.fallback=false:mail.smtp.socketFactory.port=587:mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory" "mail/gmail"
+
+https://www.google.com/settings/security/lesssecureapps

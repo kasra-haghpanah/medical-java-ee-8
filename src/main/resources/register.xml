@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sicks>
+<sick id="0">
+<firstName>kasra1</firstName>
+<lastName>haghpanah1</lastName>
+<sex>1</sex>
+</sick>
+<sick id="0">
+<firstName>farah1</firstName>
+<lastName>diba1</lastName>
+<sex>0</sex>
+</sick>
+<sick id="0">
+<firstName>shadi1</firstName>
+<lastName>rad1</lastName>
+<sex>0</sex>
+</sick>
+<sick id="0">
+<firstName>reza1</firstName>
+<lastName>shad1</lastName>
+<sex>1</sex>
+</sick>
+</sicks>

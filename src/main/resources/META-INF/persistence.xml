@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="medical" transaction-type="JTA">
+        <jta-data-source>jdbc/medical</jta-data-source>
+
+        <class>com.kasra.javaee.model.Log</class>
+        <class>com.kasra.javaee.model.MedicalRecord</class>
+        <class>com.kasra.javaee.model.Prescription</class>
+        <class>com.kasra.javaee.model.Recourse</class>
+        <class>com.kasra.javaee.model.Sick</class>
+        <class>com.kasra.javaee.model.Group</class>
+        <class>com.kasra.javaee.model.User</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="toplink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="toplink.logging.level" value="ALL"/>
+            <property name="toplink.cache.shared.default" value="false"/>
+            <property name="toplink.cache.size.default" value="1000"/>
+            <property name="toplink.orm.throw.exceptions" value="false" />
+
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <!--  https://www.eclipse.org/forums/index.php/t/881921/  -->
+        </properties>
+    </persistence-unit>
+
+
+    <persistence-unit name="batch" transaction-type="JTA">
+        <jta-data-source>jdbc/batch</jta-data-source>
+
+        <class>com.kasra.javaee.model.Person</class>
+        <class>com.kasra.javaee.model.Member</class>
+        <class>com.kasra.javaee.model.MemberBiography</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="toplink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="toplink.logging.level" value="ALL"/>
+            <property name="toplink.cache.shared.default" value="false"/>
+            <property name="toplink.cache.size.default" value="1000"/>
+            <property name="toplink.orm.throw.exceptions" value="false" />
+
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <!--  https://www.eclipse.org/forums/index.php/t/881921/  -->
+        </properties>
+    </persistence-unit>
+
+</persistence>

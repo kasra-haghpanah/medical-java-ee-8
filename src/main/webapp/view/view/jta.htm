@@ -1,0 +1,214 @@
+<div dir="{{dir}}">
+
+    <div>
+        <h2>
+            Java Transaction API (JTA 1.2 - JSR 907)
+        </h2>
+
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #65b5ff;font-weight: bold">
+                <th>col1</th>
+                <th>col2</th>
+                <th>col3</th>
+            </tr>
+
+            <tr>
+                <td><a href="#/home">Home</a></td>
+                <td><a href="#/upload">Upload</a></td>
+                <td><a href="#/host/upload">Upload To Another Host!</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/log">Log</a></td>
+                <td><a href="#/asynch/xml">XML</a></td>
+                <td><a href="#/jms/queue">JMS</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/login">Web Socket</a></td>
+                <td><a href="#/mail">Mail</a></td>
+                <td><a href="#/user">User</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/group">Group</a></td>
+                <td><a href="#/batch">Batch</a></td>
+                <td><a href="#/cdi">CDI</a></td>
+            </tr>
+            <tr>
+                <td><a href="#/jta">JTA</a></td>
+                <td><a href="#/live/video">Live Video</a></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <br/>
+        {{"Add" | translate}}:
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #f66;font-weight: bold">
+
+                <th>{{ 'FirstName' | translate}}</th>
+                <th>{{ 'LastName' | translate}}</th>
+                <th>{{ 'University' | translate}}</th>
+                <th>{{ 'Age' | translate}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" ng-model="member.firstName">
+                </td>
+                <td>
+                    <input type="text" ng-model="member.lastName">
+                </td>
+                <td>
+                    <input type="text" ng-model="member.memberBiography.university">
+                </td>
+                <td>
+                    <input type="text" ng-model="member.memberBiography.age">
+                </td>
+
+            </tr>
+
+        </table>
+
+        <br/>
+        <button ng-click="save()">{{ 'Add' | translate }}</button>
+        <br/>
+
+
+        <br/>
+        {{"Update" | translate}}:
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'ID' | translate}}</th>
+                <th>Biography {{ 'ID' | translate}}</th>
+                <th>{{ 'FirstName' | translate}}</th>
+                <th>{{ 'LastName' | translate}}</th>
+                <th>{{ 'University' | translate}}</th>
+                <th>{{ 'Age' | translate}}</th>
+            </tr>
+            <tr>
+                <td>{{memberUpdate.id}}</td>
+                <td>{{memberUpdate.memberBiography.id}}</td>
+                <td>
+                    <input type="text" ng-model="memberUpdate.firstName">
+                </td>
+                <td>
+                    <input type="text" ng-model="memberUpdate.lastName">
+                </td>
+                <td>
+                    <input type="text" ng-model="memberUpdate.memberBiography.university">
+                </td>
+                <td>
+                    <input type="text" ng-model="memberUpdate.memberBiography.age">
+                </td>
+
+            </tr>
+
+        </table>
+
+        <br/>
+        <button ng-disabled="memberUpdate == null" ng-click="update()">{{ 'Update' | translate }}</button>
+        <br/>
+        <br/>
+
+        <table style="border-collapse:collapse;" border="1px solid black">
+            <tr style="background-color: #ff7337;font-weight: bold">
+                <th>JTA Container Management</th>
+                <th>JTA Container Management With Exception</th>
+                <th>JTA Bean Management</th>
+            </tr>
+
+            <tr>
+                <td align="center">
+                    <button ng-disabled="memberUpdate == null" ng-click="saveContainerMember()">saveContainerMember
+                    </button>
+                </td>
+                <td align="center">
+                    <button ng-disabled="memberUpdate == null" ng-click="saveContainerMemberWithException()">
+                        saveContainerMemberWithException
+                    </button>
+                </td>
+                <td align="center">
+                    <button ng-disabled="memberUpdate == null" ng-click="saveBeanMember()">saveBeanMember</button>
+                </td>
+            </tr>
+        </table>
+
+
+        <br/>
+
+
+        {{"From_Server" | translate}}:
+        <table ng-if="memberList" style="border-collapse:collapse;" border="1px solid black" id="memberList">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'ID' | translate}}</th>
+                <th>Biography {{ 'ID' | translate}}</th>
+                <th>{{ 'FirstName' | translate}}</th>
+                <th>{{ 'LastName' | translate}}</th>
+                <th>{{ 'University' | translate}}</th>
+                <th>{{ 'Age' | translate}}</th>
+                <th>{{ 'Delete' | translate}}</th>
+                <th>{{ 'Update' | translate}}</th>
+            </tr>
+            <tr ng-repeat="item in memberList">
+                <td>{{item.id}}</td>
+                <td>{{item.memberBiography.id}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.memberBiography.university}}</td>
+                <td>{{item.memberBiography.age}}</td>
+
+                <td>
+                    <button ng-click="delete(item)">{{ 'Delete' | translate }}</button>
+                </td>
+                <td>
+                    <button ng-click="updateRecord(item)">{{ 'Update' | translate }}</button>
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <br/>
+        <br/>
+        {{'LastName'|translate}}:<input type="text" value="{{ 'Search' | translate}}"  ng-model="search" ng-change="change()">
+        <br/>
+        <table ng-if="memberNativeList" style="border-collapse:collapse;" border="1px solid black"
+               id="memberNativeList">
+
+            <tr style="background-color: #a1e41c;font-weight: bold">
+                <th>{{ 'ID' | translate}}</th>
+                <th>Biography {{ 'ID' | translate}}</th>
+                <th>{{ 'FirstName' | translate}}</th>
+                <th>{{ 'LastName' | translate}}</th>
+                <th>{{ 'University' | translate}}</th>
+                <th>{{ 'Age' | translate}}</th>
+            </tr>
+            <tr ng-repeat="item in memberNativeList">
+                <td>{{item.id}}</td>
+                <td>{{item.memberBiography.id}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.memberBiography.university}}</td>
+                <td>{{item.memberBiography.age}}</td>
+
+
+            </tr>
+
+        </table>
+
+
+        <br/>
+        <button ng-click="changeLanguage('fa')" translate="BUTTON_LANG_FA">{{ 'BUTTON_LANG_FA' | translate }}</button>
+        <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">{{ 'BUTTON_LANG_EN' | translate }}</button>
+        <button ng-click="htmlToPDF('memberList')">{{ 'PDF_Export' | translate }}</button>
+        <button ng-click="htmlToImage('memberList')">{{ 'Image_Export' | translate }}</button>
+    </div>
+
+
+</div>

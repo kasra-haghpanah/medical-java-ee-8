@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC
+        "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
+        "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+
+<resources>
+    <jdbc-resource
+            enabled="true"
+            jndi-name="jdbc/medical"
+            object-type="user"
+            pool-name="MyPool">
+        <description/>
+    </jdbc-resource>
+    <jdbc-connection-pool
+            allow-non-component-callers="false"
+            associate-with-thread="false"
+            connection-creation-retry-attempts="0"
+            connection-creation-retry-interval-in-seconds="10"
+            connection-leak-reclaim="false"
+            connection-leak-timeout-in-seconds="0"
+            connection-validation-method="auto-commit"
+            datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlDataSource"
+            fail-all-connections="false" idle-timeout-in-seconds="300"
+            is-connection-validation-required="false" is-isolation-level-guaranteed="true"
+            lazy-connection-association="false"
+            lazy-connection-enlistment="false"
+            match-connections="false"
+            max-connection-usage-count="0"
+            max-pool-size="32"
+            max-wait-time-in-millis="60000"
+            name="MyPool"
+            non-transactional-connections="false"
+            pool-resize-quantity="2"
+            res-type="javax.sql.ConnectionPoolDataSource"
+            statement-timeout-in-seconds="-1"
+            steady-pool-size="8"
+            validate-atmost-once-period-in-seconds="0"
+            wrap-jdbc-objects="false">
+        <property name="URL" value="jdbc:mysql://localhost:3306/medical?zeroDateTimeBehavior=convertToNull"/>
+        <property name="User" value="root"/>
+        <property name="Password" value="123"/>
+        <property name="eclipselink.deploy-on-startup" value="true"/>
+    </jdbc-connection-pool>
+
+    <jdbc-resource
+            enabled="true"
+            jndi-name="jdbc/batch"
+            object-type="user"
+            pool-name="MyPoolBatch">
+    <description/>
+    </jdbc-resource>
+    <jdbc-connection-pool
+            allow-non-component-callers="false"
+            associate-with-thread="false"
+            connection-creation-retry-attempts="0"
+            connection-creation-retry-interval-in-seconds="10"
+            connection-leak-reclaim="false"
+            connection-leak-timeout-in-seconds="0"
+            connection-validation-method="auto-commit"
+            datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlDataSource"
+            fail-all-connections="false" idle-timeout-in-seconds="300"
+            is-connection-validation-required="false" is-isolation-level-guaranteed="true"
+            lazy-connection-association="false"
+            lazy-connection-enlistment="false"
+            match-connections="false"
+            max-connection-usage-count="0"
+            max-pool-size="32"
+            max-wait-time-in-millis="60000"
+            name="MyPoolBatch"
+            non-transactional-connections="false"
+            pool-resize-quantity="2"
+            res-type="javax.sql.ConnectionPoolDataSource"
+            statement-timeout-in-seconds="-1"
+            steady-pool-size="8"
+            validate-atmost-once-period-in-seconds="0"
+            wrap-jdbc-objects="false">
+        <property name="URL" value="jdbc:mysql://localhost:3306/batch?zeroDateTimeBehavior=convertToNull"/>
+        <property name="User" value="root"/>
+        <property name="Password" value="123"/>
+        <property name="eclipselink.deploy-on-startup" value="true"/>
+    </jdbc-connection-pool>
+
+    <admin-object-resource enabled="true" jndi-name="jms/MyTopic" res-type="javax.jms.Topic" res-adapter="jmsra">
+        <property name="Name" value="PhysicalTopic"/>
+    </admin-object-resource>
+
+    <admin-object-resource enabled="true" jndi-name="jms/MyQueue" res-type="javax.jms.Queue" res-adapter="jmsra">
+        <property name="Name" value="PhysicalQueue"/>
+    </admin-object-resource>
+
+
+    <admin-object-resource enabled="true" jndi-name="jms/MyQueue2" res-type="javax.jms.Queue" res-adapter="jmsra">
+        <property name="Name" value="PhysicalQueue"/>
+    </admin-object-resource>
+
+    <custom-resource res-type="java.util.properties" jndi-name="properties/example"
+                     factory-class="org.glassfish.resources.custom.factory.PropertiesFactory">
+        <property name="prop1" value="test1"/>
+        <property name="prop2" value="test2"/>
+    </custom-resource>
+
+
+    <mail-resource debug="false"
+                   enabled="true"
+                   from="kasrakhpk1985@gmail.com"
+                   host="smtp.gmail.com"
+                   jndi-name="mail/gmail"
+                   object-type="user"
+                   store-protocol="imap"
+                   store-protocol-class="com.sun.mail.imap.IMAPStore"
+                   transport-protocol="smtp"
+                   transport-protocol-class="com.sun.mail.smtp.SMTPTransport"
+                   user="kasrakhpk1985">
+
+
+        <property name="mail.smtp.port" value="587"/>
+        <property name="mail.smtp.socketFactory.port" value="587"/>
+        <property name="mail.smtp.socketFactory.fallback" value="false"/>
+        <property name="mail.smtp.socketFactory.class" value="javax.net.ssl.SSLSocketFactory"/>
+        <property name="mail.smtp.auth" value="true"/>
+        <property name="mail.smtp.password" value="REZA8414443KASRAh"/>
+        <property name="mail.smtp.starttls.enable" value="true"/>
+
+    </mail-resource>
+
+
+</resources>
+
+
+
+
+

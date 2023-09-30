@@ -1,0 +1,152 @@
+<div dir="{{dir}}">
+    <h2>
+        Upload to Servlet
+    </h2>
+
+    <table style="border-collapse:collapse;" border="1px solid black">
+
+        <tr style="background-color: #65b5ff;font-weight: bold">
+            <th>col1</th>
+            <th>col2</th>
+            <th>col3</th>
+        </tr>
+
+        <tr>
+            <td><a href="#/home">Home</a></td>
+            <td><a href="#/upload">Upload</a></td>
+            <td><a href="#/host/upload">Upload To Another Host!</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="#/log">Log</a></td>
+            <td><a href="#/asynch/xml">XML</a></td>
+            <td><a href="#/jms/queue">JMS</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="#/login">Web Socket</a></td>
+            <td><a href="#/mail">Mail</a></td>
+            <td><a href="#/user">User</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="#/group">Group</a></td>
+            <td><a href="#/batch">Batch</a></td>
+            <td><a href="#/cdi">CDI</a></td>
+        </tr>
+        <tr>
+            <td><a href="#/jta">JTA</a></td>
+            <td><a href="#/live/video">Live Video</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <br/>
+
+
+    <table>
+        <tr>
+            <td>
+                <table>
+
+                    <tr>
+                        <td>
+                            <div id="myupload" method="post" action="kasra/sick/upload">
+
+                                FirstName:<input type="text" name="firstname">
+                                <br/>
+                                LastName:<input type="text" name="lastname">
+                                <br/>
+                                useDB:<input type="checkbox" name="adminoptions" value="useDB">
+                                <br/>
+                                uselocal:<input type="checkbox" name="adminoptions" value="uselocal">
+                                <br/>
+                                <select name="city">
+                                    <option value="rasht">rasht</option>
+                                    <option value="tehran">tehran</option>
+                                </select>
+                                <br/>
+                                <input type="file" name="file1">
+                                <div id="content1">
+                                    <div style="background-color: red;color: white;height: 50px;line-height: 50px;width: 500px;"></div>
+                                    <div></div>
+                                </div>
+                                <br/>
+                                <input type="file" name="file2">
+                                <div id="content2">
+                                    <div style="background-color: red;color: white;height: 50px;line-height: 50px;width: 500px;"></div>
+                                    <div></div>
+                                </div>
+                                <br/>
+                                <input type="button" value="send" ng-click="upload('myupload')">
+
+
+                            </div>
+                        </td>
+
+                        <td>
+                            <div>
+                                <div ng-repeat="item in download"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <td>
+
+                <table>
+                    <tr>
+                        <th>{{dir}}</th>
+                        <th><input type="button" ng-click="getListFile(backDir(dir))" value="{{'Back' | translate}}" /> </th>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <th>{{'FileName' | translate}}</th>
+                        <th>{{'Size' | translate}}</th>
+                        <th>{{'Mime' | translate}}</th>
+                        <th>{{'Download' | translate}}</th>
+                        <th>{{'Open' | translate}}</th>
+                    </tr>
+
+                    <tr ng-repeat="item in downloadList">
+                        <td ng-if="item.folder==true" ><a ng-dblclick="getListFile(forwardDir(item.filename))" ng-click="disabledLink($event)" href="#/{{dir}}/{{item.filename}}">{{item.filename}}</a></td>
+                        <td ng-if="item.folder==false && ( item.mime.indexOf('video')>-1 || item.mime.indexOf('audio')>-1 || item.mime.indexOf('image')>-1 || item.mime.indexOf('text')>-1 || item.mime.indexOf('pdf')>-1 )"  ng-click="download(item , false , true)" style="cursor: pointer;">{{item.filename}}</td>
+                        <td ng-if="item.folder==false && !( item.mime.indexOf('video')>-1 || item.mime.indexOf('audio')>-1 || item.mime.indexOf('image')>-1 || item.mime.indexOf('text')>-1 || item.mime.indexOf('pdf')>-1 )" style="cursor: pointer;">{{item.filename}}</td>
+
+                        <td>{{item.size}}</td>
+                        <td>{{item.mime}}</td>
+                        <td id="{{item.filename}}" ng-click="download(item , true , false)" style="cursor: pointer;">
+                            <div ng-if="item.folder==false" style="width: 150px;border: 1px solid black;text-align: center;">
+                                <div tt="percent" style="width: 100%;height: 20px;color: red;">0%</div>
+                                <div tt="progress" style="background-color: green;color:white;text-align: center;width: 0%;;margin-top: -20px;height: 20px;" >&nbsp;</div>
+                            </div>
+                        </td>
+                        <td id="{{item.filename}}-open"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+    <br/>
+
+    <div style="width: 100px;height: 30px;">
+        <div id="percent"
+             style="width: 0%;height: 100%;background-color: green;color: white;text-align: center;line-height: 30px;"></div>
+    </div>
+    <br/>
+
+
+    <button ng-click="changeLanguage('fa')" translate="BUTTON_LANG_FA">{{ 'BUTTON_LANG_FA' | translate }}</button>
+    <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">{{ 'BUTTON_LANG_EN' | translate }}</button>
+    <br/>
+
+    <img alt="img" src="/upload/kasra.jpg" style="width:50px;height:50px;"/>
+
+</div>

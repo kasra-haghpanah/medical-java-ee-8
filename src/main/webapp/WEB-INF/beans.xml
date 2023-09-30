@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+       bean-discovery-mode="all">
+
+
+
+    <alternatives>
+        <class>com.kasra.javaee.cdi.alternative.bean.AlternativeTwo</class>
+        <class>com.kasra.javaee.cdi.alternative.bean.AlternativeThree</class>
+    </alternatives>
+
+
+
+    <interceptors>
+        <class>com.kasra.javaee.interceptor.LogInterceptor</class>
+    </interceptors>
+
+    <decorators>
+        <class>com.kasra.javaee.cdi.alternative.decorator.MyDecorator</class>
+    </decorators>
+
+
+
+
+</beans>

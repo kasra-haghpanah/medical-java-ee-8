@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="SecondJobWithBatchlet" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     version="1.0">
+    <properties>
+        <property name="input" value="person.csv"/>
+    </properties>
+    <step id="FirstStep">
+        <batchlet ref="firstBatchlet"/>
+    </step>
+    <step id="secondStep">
+
+    </step>
+</job>

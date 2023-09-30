@@ -1,0 +1,140 @@
+<div dir="{{dir}}">
+
+    <div>
+        <h2>
+            JDBC Realm (Web Security)
+        </h2>
+
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #65b5ff;font-weight: bold">
+                <th>col1</th>
+                <th>col2</th>
+                <th>col3</th>
+            </tr>
+
+            <tr>
+                <td><a href="#/home">Home</a></td>
+                <td><a href="#/upload">Upload</a></td>
+                <td><a href="#/host/upload">Upload To Another Host!</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/log">Log</a></td>
+                <td><a href="#/asynch/xml">XML</a></td>
+                <td><a href="#/jms/queue">JMS</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/login">Web Socket</a></td>
+                <td><a href="#/mail">Mail</a></td>
+                <td><a href="#/user">User</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/group">Group</a></td>
+                <td><a href="#/batch">Batch</a></td>
+                <td><a href="#/cdi">CDI</a></td>
+            </tr>
+            <tr>
+                <td><a href="#/jta">JTA</a></td>
+                <td><a href="#/live/video">Live Video</a></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <br/>
+        {{"Add" | translate}}:
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'Username' | translate}}</th>
+                <th>{{ 'Role' | translate}}</th>
+            </tr>
+            <tr>
+
+                <td>
+                    <select ng-model="user">
+                        <option value="{{item}}" ng-repeat="item in userList">{{item.username}}</option>
+                    </select>
+                </td>
+
+                <td>
+                    <select ng-model="role">
+                        <option value="{{item.toLowerCase().trim()}}" ng-repeat="item in roles">{{item | translate}}</option>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+
+
+        <br/>
+        <button ng-click="add()">{{ 'Add' | translate }}</button>
+        <br/>
+        {{"Update" | translate}}:
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'ID' | translate}}</th>
+                <th>{{ 'Username' | translate}}</th>
+                <th>{{ 'Role' | translate}}</th>
+            </tr>
+            <tr>
+                <td>{{updateItem.id}}</td>
+                <td>
+                    <input type="text" ng-model="updateItem.user.username">
+                </td>
+                <td>
+                    <select ng-model="updateItem.role">
+                        <option value="{{item.toLowerCase().trim()}}" ng-repeat="item in roles">{{item | translate}}</option>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+        <br/>
+        <button ng-click="update()" ng-disabled="updateItem == null">{{ 'Update' | translate }}</button>
+        <br/>
+
+        {{"From_Server" | translate}}:
+        <table ng-if="groupList" style="border-collapse:collapse;" border="1px solid black" id="groupList">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'ID' | translate}}</th>
+                <th>{{ 'Username' | translate}}</th>
+                <th>{{ 'Password' | translate}}</th>
+                <th>{{ 'Role' | translate}}</th>
+                <th>{{ 'Update' | translate}}</th>
+                <th>{{ 'Delete' | translate}}</th>
+            </tr>
+            <tr ng-repeat="item in groupList">
+                <td>{{item.id}}</td>
+                <td>{{item.user.username}}</td>
+                <td>{{item.user.password}}</td>
+                <td>
+                    <select>
+                        <option value="{{item.role}}" >{{ item.role |translate}}</option>
+                    </select>
+                </td>
+                <td>
+                    <button ng-click="delete(item)">{{ 'Delete' | translate }}</button>
+                </td>
+                <td>
+                    <button ng-click="updateGroup(item)">{{ 'Update' | translate }}</button>
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <br/>
+        <button ng-click="changeLanguage('fa')" translate="BUTTON_LANG_FA">{{ 'BUTTON_LANG_FA' | translate }}</button>
+        <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">{{ 'BUTTON_LANG_EN' | translate }}</button>
+        <button ng-click="htmlToPDF('groupList')">{{ 'PDF_Export' | translate }}</button>
+        <button ng-click="htmlToImage('groupList')">{{ 'Image_Export' | translate }}</button>
+    </div>
+
+
+</div>

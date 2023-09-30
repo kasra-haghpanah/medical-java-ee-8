@@ -1,0 +1,126 @@
+<div dir="{{dir}}">
+
+    <div>
+        <h2>
+            JDBC Realm (Web Security)
+        </h2>
+
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #65b5ff;font-weight: bold">
+                <th>col1</th>
+                <th>col2</th>
+                <th>col3</th>
+            </tr>
+
+            <tr>
+                <td><a href="#/home">Home</a></td>
+                <td><a href="#/upload">Upload</a></td>
+                <td><a href="#/host/upload">Upload To Another Host!</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/log">Log</a></td>
+                <td><a href="#/asynch/xml">XML</a></td>
+                <td><a href="#/jms/queue">JMS</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/login">Web Socket</a></td>
+                <td><a href="#/mail">Mail</a></td>
+                <td><a href="#/user">User</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/group">Group</a></td>
+                <td><a href="#/batch">Batch</a></td>
+                <td><a href="#/cdi">CDI</a></td>
+            </tr>
+            <tr>
+                <td><a href="#/jta">JTA</a></td>
+                <td><a href="#/live/video">Live Video</a></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <br/>
+        {{"Add" | translate}}:
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'Username' | translate}}</th>
+                <th>{{ 'Password' | translate}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" ng-model="addItem.username">
+                </td>
+                <td>
+                    <input type="text" ng-model="addItem.password">
+                </td>
+            </tr>
+
+        </table>
+
+        <br/>
+        <button ng-click="add()">{{ 'Add' | translate }}</button>
+        <br/>
+        {{"Update" | translate}}:
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'ID' | translate}}</th>
+                <th>{{ 'FirstName' | translate}}</th>
+                <th>{{ 'LastName' | translate}}</th>
+            </tr>
+            <tr>
+                <td>{{updateItem.id}}</td>
+                <td>
+                    <input type="text" ng-model="updateItem.username">
+                </td>
+                <td>
+                    <input type="text" ng-model="updateItem.password">
+                </td>
+            </tr>
+
+        </table>
+        <br/>
+        <button ng-click="update()" ng-disabled="updateItem == null">{{ 'Update' | translate }}</button>
+        <br/>
+
+        {{"From_Server" | translate}}:
+        <table ng-if="userList" style="border-collapse:collapse;" border="1px solid black" id="userList">
+
+            <tr style="background-color: #f66;font-weight: bold">
+                <th>{{ 'ID' | translate}}</th>
+                <th>{{ 'Username' | translate}}</th>
+                <th>{{ 'Password' | translate}}</th>
+                <th>{{ 'Delete' | translate}}</th>
+                <th>{{ 'Update' | translate}}</th>
+            </tr>
+            <tr ng-repeat="item in userList">
+                <td>{{item.id}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.password}}</td>
+
+                <td>
+                    <button ng-click="delete(item)">{{ 'Delete' | translate }}</button>
+                </td>
+                <td>
+                    <button ng-click="updateUser(item)">{{ 'Update' | translate }}</button>
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <br/>
+        <button ng-click="changeLanguage('fa')" translate="BUTTON_LANG_FA">{{ 'BUTTON_LANG_FA' | translate }}</button>
+        <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">{{ 'BUTTON_LANG_EN' | translate }}</button>
+        <button ng-click="htmlToPDF('userList')">{{ 'PDF_Export' | translate }}</button>
+        <button ng-click="htmlToImage('userList')">{{ 'Image_Export' | translate }}</button>
+    </div>
+
+
+</div>

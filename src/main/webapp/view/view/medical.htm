@@ -1,0 +1,170 @@
+<div dir="{{dir}}">
+    <h2>
+    Enterprise Java Bean (Ejb stateless)
+    </h2>
+
+    <table style="border-collapse:collapse;" border="1px solid black">
+
+        <tr style="background-color: #65b5ff;font-weight: bold">
+            <th>col1</th>
+            <th>col2</th>
+            <th>col3</th>
+        </tr>
+
+        <tr>
+            <td><a href="#/home">Home</a></td>
+            <td><a href="#/upload">Upload</a></td>
+            <td><a href="#/host/upload">Upload To Another Host!</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="#/log">Log</a></td>
+            <td><a href="#/asynch/xml">XML</a></td>
+            <td><a href="#/jms/queue">JMS</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="#/login">Web Socket</a></td>
+            <td><a href="#/mail">Mail</a></td>
+            <td><a href="#/user">User</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="#/group">Group</a></td>
+            <td><a href="#/batch">Batch</a></td>
+            <td><a href="#/cdi">CDI</a></td>
+        </tr>
+        <tr>
+            <td><a href="#/jta">JTA</a></td>
+            <td><a href="#/live/video">Live Video</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <table style="border-collapse:collapse;" border="1px solid black">
+
+        <tr style="background-color: #f66;font-weight: bold">
+            <th>{{ 'SickId' | translate}}</th>
+            <th>{{ 'Category' | translate}}</th>
+            <th>{{ 'MedicalRecord' | translate}}</th>
+        </tr>
+        <tr>
+
+            <td>
+                {{addMedicalRecord.sick.id}}
+            </td>
+            <td>
+                <select ng-model="addMedicalRecord.category">
+                    <option value="heart">{{ 'Heart' | translate}}</option>
+                    <option value="brain">{{ 'Brain' | translate}}</option>
+                </select>
+            </td>
+            <td>
+                <textarea  ng-model="addMedicalRecord.description" onresize="false"></textarea>
+            </td>
+        </tr>
+
+    </table>
+
+
+
+    <br/>
+    <button ng-click="add()">{{ 'Add' | translate }}</button>
+    <br/>
+    <br/>
+
+
+
+
+
+    <table style="border-collapse:collapse;" border="1px solid black">
+
+        <tr style="background-color: #f66;font-weight: bold">
+            <th>{{ 'ID' | translate}}</th>
+            <th>{{ 'SickId' | translate}}</th>
+            <th>{{ 'Category' | translate}}</th>
+            <th>{{ 'MedicalRecord' | translate}}</th>
+        </tr>
+        <tr>
+            <td>
+                {{updateMedicalRecord.id}}
+            </td>
+            <td>
+                {{updateMedicalRecord.sick.id}}
+            </td>
+            <td>
+                <select ng-model="updateMedicalRecord.category">
+                    <option value="heart">{{ 'Heart' | translate}}</option>
+                    <option value="brain">{{ 'Brain' | translate}}</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" ng-model="updateMedicalRecord.description">
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <br/>
+    <button ng-click="update()" ng-disabled="updateMedicalRecord.id == null">{{"Update" | translate}}</button>
+    <br/>
+    <br/>
+
+
+    <table ng-if="medicalRecordList" style="border-collapse:collapse;" border="1px solid black" id="medicalRecordList">
+
+        <tr style="background-color: #f66;font-weight: bold">
+            <th>{{ 'ID' | translate}}</th>
+            <th>{{ 'SickId' | translate}}</th>
+            <th>{{ 'FirstName' | translate}}</th>
+            <th>{{ 'LastName' | translate}}</th>
+            <th>{{ 'Sex' | translate}}</th>
+            <th>{{ 'Category' | translate}}</th>
+            <th>{{ 'MedicalRecord' | translate}}</th>
+            <th>{{ 'Date' | translate}}</th>
+            <th>{{ 'Delete' | translate}}</th>
+            <th>{{ 'Update' | translate}}</th>
+        </tr>
+        <tr ng-repeat="item in medicalRecordList">
+            <td>{{item.id}}</td>
+            <td>{{item.sick.id}}</td>
+            <td>{{item.sick.firstName}}</td>
+            <td>{{item.sick.lastName}}</td>
+            <td>
+                <select>
+                    <option value="0" ng-if="item.sick.sex==0">{{'Female'|translate}}</option>
+                    <option value="1" ng-if="item.sick.sex!=0">{{'Male'|translate}}</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option value="{{item.category}}" >{{item.category|translate}}</option>
+                </select>
+            </td>
+            <td>{{item.description}}</td>
+            <td>{{item.date}}</td>
+            <td>
+                <button ng-click="delete(item)">{{ 'Delete' | translate }}</button>
+            </td>
+            <td>
+                <button ng-click="updateMedical(item)">{{ 'Update' | translate }}</button>
+            </td>
+        </tr>
+
+    </table>
+
+
+
+
+
+    <br/>
+    <br/>
+    <button ng-click="changeLanguage('fa')" translate="BUTTON_LANG_FA">{{ 'BUTTON_LANG_FA' | translate }}</button>
+    <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">{{ 'BUTTON_LANG_EN' | translate }}</button>
+    <button ng-click="htmlToPDF('medicalRecordList')">{{ 'PDF_Export' | translate }}</button>
+    <button ng-click="htmlToImage('medicalRecordList')">{{ 'Image_Export' | translate }}</button>
+
+
+</div>

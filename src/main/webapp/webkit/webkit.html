@@ -1,0 +1,91 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><table ng-if="sickList" style="border-collapse:collapse;" border="1px solid black" id="sickList" class="ng-scope">
+
+            <tbody><tr style="background-color: #f66;font-weight: bold">
+                <th class="ng-binding">id</th>
+                <th class="ng-binding">firstname</th>
+                <th class="ng-binding">lastname</th>
+                <th class="ng-binding">sex</th>
+                <th class="ng-binding">Delete</th>
+                <th class="ng-binding">Update</th>
+                <th class="ng-binding">medical record</th>
+                <th class="ng-binding">recourse</th>
+            </tr>
+            <!-- ngRepeat: item in sickList --><tr ng-repeat="item in sickList" class="ng-scope">
+                <td class="ng-binding">1</td>
+                <td class="ng-binding">jms</td>
+                <td class="ng-binding">queue</td>
+                <td>
+                    <select>
+                        <!-- ngIf: item.sex==0 --><option value="0" ng-if="item.sex==0" class="ng-binding ng-scope">female</option><!-- end ngIf: item.sex==0 -->
+                        <!-- ngIf: item.sex!=0 -->
+                    </select>
+                </td>
+                <td>
+                    <button ng-click="delete(item)" class="ng-binding">Delete</button>
+                </td>
+                <td>
+                    <button ng-click="updateSick(item)" class="ng-binding">Update</button>
+                </td>
+                <td><a href="#/medical/record/sick/1" style="text-decoration: none;" class="ng-binding">medical record</a></td>
+                <td><a href="#/recourse/sick/1" style="text-decoration: none;" class="ng-binding">recourse</a></td>
+
+            </tr><!-- end ngRepeat: item in sickList --><tr ng-repeat="item in sickList" class="ng-scope">
+                <td class="ng-binding">3</td>
+                <td class="ng-binding">kambiz</td>
+                <td class="ng-binding">rad</td>
+                <td>
+                    <select>
+                        <!-- ngIf: item.sex==0 -->
+                        <!-- ngIf: item.sex!=0 --><option value="1" ng-if="item.sex!=0" class="ng-binding ng-scope">male</option><!-- end ngIf: item.sex!=0 -->
+                    </select>
+                </td>
+                <td>
+                    <button ng-click="delete(item)" class="ng-binding">Delete</button>
+                </td>
+                <td>
+                    <button ng-click="updateSick(item)" class="ng-binding">Update</button>
+                </td>
+                <td><a href="#/medical/record/sick/3" style="text-decoration: none;" class="ng-binding">medical record</a></td>
+                <td><a href="#/recourse/sick/3" style="text-decoration: none;" class="ng-binding">recourse</a></td>
+
+            </tr><!-- end ngRepeat: item in sickList --><tr ng-repeat="item in sickList" class="ng-scope">
+                <td class="ng-binding">4</td>
+                <td class="ng-binding">shadi1</td>
+                <td class="ng-binding">rad1</td>
+                <td>
+                    <select>
+                        <!-- ngIf: item.sex==0 --><option value="0" ng-if="item.sex==0" class="ng-binding ng-scope">female</option><!-- end ngIf: item.sex==0 -->
+                        <!-- ngIf: item.sex!=0 -->
+                    </select>
+                </td>
+                <td>
+                    <button ng-click="delete(item)" class="ng-binding">Delete</button>
+                </td>
+                <td>
+                    <button ng-click="updateSick(item)" class="ng-binding">Update</button>
+                </td>
+                <td><a href="#/medical/record/sick/4" style="text-decoration: none;" class="ng-binding">medical record</a></td>
+                <td><a href="#/recourse/sick/4" style="text-decoration: none;" class="ng-binding">recourse</a></td>
+
+            </tr><!-- end ngRepeat: item in sickList --><tr ng-repeat="item in sickList" class="ng-scope">
+                <td class="ng-binding">5</td>
+                <td class="ng-binding">ahmad</td>
+                <td class="ng-binding">ahi</td>
+                <td>
+                    <select>
+                        <!-- ngIf: item.sex==0 -->
+                        <!-- ngIf: item.sex!=0 --><option value="1" ng-if="item.sex!=0" class="ng-binding ng-scope">male</option><!-- end ngIf: item.sex!=0 -->
+                    </select>
+                </td>
+                <td>
+                    <button ng-click="delete(item)" class="ng-binding">Delete</button>
+                </td>
+                <td>
+                    <button ng-click="updateSick(item)" class="ng-binding">Update</button>
+                </td>
+                <td><a href="#/medical/record/sick/5" style="text-decoration: none;" class="ng-binding">medical record</a></td>
+                <td><a href="#/recourse/sick/5" style="text-decoration: none;" class="ng-binding">recourse</a></td>
+
+            </tr><!-- end ngRepeat: item in sickList -->
+
+        </tbody></table></body></html>

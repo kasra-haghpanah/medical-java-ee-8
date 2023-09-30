@@ -1,0 +1,82 @@
+<div dir="{{dir}}">
+    <h2>
+    Http Session (Login)
+    </h2>
+
+    <div>
+        <h2>
+            {{'Login' | translate}}
+        </h2>
+
+        <table style="border-collapse:collapse;" border="1px solid black">
+
+            <tr style="background-color: #65b5ff;font-weight: bold">
+                <th>col1</th>
+                <th>col2</th>
+                <th>col3</th>
+            </tr>
+
+            <tr>
+                <td><a href="#/home">Home</a></td>
+                <td><a href="#/upload">Upload</a></td>
+                <td><a href="#/host/upload">Upload To Another Host!</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/log">Log</a></td>
+                <td><a href="#/asynch/xml">XML</a></td>
+                <td><a href="#/jms/queue">JMS</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/login">Web Socket</a></td>
+                <td><a href="#/mail">Mail</a></td>
+                <td><a href="#/user">User</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="#/group">Group</a></td>
+                <td><a href="#/batch">Batch</a></td>
+                <td><a href="#/cdi">CDI</a></td>
+            </tr>
+            <tr>
+                <td><a href="#/jta">JTA</a></td>
+                <td><a href="#/live/video">Live Video</a></td>
+                <td></td>
+            </tr>
+        </table>
+        <br/>
+        {{ sick | json}}
+        <br/>
+        {{ sickList }}
+        <br/>
+
+        {{ 'Enter_Name' | translate }}:<br/>
+        <input type="text" ng-model="name"><br/>
+        {{ 'Room' | translate }}:<br/>
+        <input type="text" ng-model="room" readonly="readonly">
+        <select ng-model="room">
+            <option value="{{item.toLowerCase().trim()}}" ng-repeat="item in rooms">{{item | translate}}</option>
+        </select>
+        <div ng-show="room=='new_room'">
+            <div>{{"Plz_enter_room" | translate}}:</div>
+            <input ng-model="newRoom">
+            <input type="button" ng-click="add()" value="{{'Add' | translate}}">
+        </div>
+        <br/>
+        <select ng-model="country">
+            <option value="US">{{ 'US' | translate}}</option>
+            <option value="CA">{{ 'CA' | translate}}</option>
+            <option value="IR">{{ 'IR' | translate}}</option>
+        </select>
+        <br/>
+        <button ng-click="login()" ng-disabled="(name == '') || (room == 'new_room')">{{ 'Login' | translate }}</button>
+        <button ng-click="signout()">{{ 'Signout' | translate }}</button>
+
+        <br/>
+        <button ng-click="changeLanguage('fa')" translate="BUTTON_LANG_FA">{{ 'BUTTON_LANG_FA' | translate }}</button>
+        <button ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">{{ 'BUTTON_LANG_EN' | translate }}</button>
+    </div>
+
+
+</div>
